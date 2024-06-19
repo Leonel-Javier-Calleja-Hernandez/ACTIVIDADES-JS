@@ -4,18 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        }
+        button{
+            width: 250px;
+            height: 150px;
+            background-color: yellow;
+            border-radius: 10px;
+            border: 5px solid red;
+            font-size: 2em;
+            margin: 10px;
+        }
+        img{
+            width: 200px;
+        }
+        #botones{
+            display: flex;
+        }
+    </style>
     <script>
-        window.onload=cambiarImg
+        window.onload=cambiarImg;
+        var array=["bombum.jpeg","espejo.jpeg","gorra.jpeg","llavero.jpeg","monedas.png","sacapunta.jpeg"]
+        var b = 0;
+
         function cambiarImg() {
-            document.getElementById("caja").innerHTML=`<img src="img/todo-rico.png" alt="">`
+            document.getElementById("1").onclick=f1;
+            document.getElementById("2").onclick=f2;
+            document.getElementById("3").onclick=f3;
+            document.getElementById("4").onclick=f4;
+
+        }
+        function f1() {
+            // borra todo dentro de la caja y solo deja la imagen que se agrega en esta funtion
+            document.getElementById("caja").innerHTML=`<img id="imagen" src="img/espejo.jpeg" alt="">`
+        }
+        function f2() {
+            // cambia el src de la imagen por el nuevo sin movificar los demas
+            document.getElementById("imagen").src="img/gorra.jpeg"
+        }
+        function f3(){
+            // agrega 
+        document.getElementById("caja").innerHTML+=`<img id="imagen2" src="img/sacapunta.jpeg" alt="">`
+        
+        }
+        function f4() {
+            // cambiar por las imagenes de el array
+            document.getElementById("caja").innerHTML+=`<img id="imagen" src="img/${array[b]}" alt="">`
+            b++
         }
     </script>
 </head>
 <body>
     <div id="caja">
-        <img src="img/todo-rico.png" alt="">
+        <img id="imagen" src="img/todo-rico.png" alt="">
+        <img id="imagen2" src="img/todo-rico.png" alt="">
     </div>
-    <button id="1">boton 1</button>
-    <button id="2">boton 2</button>
+    <div id="botones">
+        <button id="1">borrar y cambiar</button>
+        <button id="2">cambiar img por id</button>
+        <button id="3">agregar img</button>
+        <button id="4">con array</button>
+    
+    </div>
+    
 </body>
 </html>
