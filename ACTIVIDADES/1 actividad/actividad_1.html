@@ -52,6 +52,10 @@
         
         }
         function f4() {
+            if (b==array.length) {
+                b=0;
+                document.getElementById("caja").innerHTML=""
+            }
             // cambiar por las imagenes de el array
             document.getElementById("caja").innerHTML+=`<img id="imagen" src="img/${array[b]}" alt="">`
             b++
