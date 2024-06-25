@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+    // En esta actividad se realizaron prácticas de los sonidos
+        window.onload=inicio;
+        let cosas=["bombum","espejo","gorra","llavero"]
+        let valor=["100","150","200","250"]
+        function inicio() {
+            cosas.forEach(function (valor, indice){
+                if (indice<1) {
+                    document.getElementById("caja").innerHTML+=`<div><img src=img/${valor}.jpeg><div>${valor[indice]}</div></div>`
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+    <div id="caja"></div>  
+    <audio src=""></audio>
+</body>
+</html>
