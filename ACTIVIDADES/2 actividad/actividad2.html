@@ -4,29 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #random{
+            display: flex;
+        }
+        #random div{
+            margin: 10px;
+        }
+        #numero{
+            color: rgb(255, 0, 0);
+        }
+    </style>
     <script type="text/javascript">
-    // En esta actividad se realizaron prácticas de los sonidos
+    // En esta actividad se aprendera a como subir y bajar el audio medienate un input en js
         window.onload=inicio;
-        let cosas=["bombum","espejo","gorra","llavero"]
-        let valor=["100","150","200","250"]
         let random=Math.floor(Math.random()*10)+1
-        // cortar el codigo 
         let AUDIO 
+
         function inicio() {
             document.getElementById("boton1").onclick=audio1
             document.getElementById("boton2").onclick=audio2
+            document.getElementById("caja").innerHTML=`<div id="random"><div id="numero">${random}</div><div>$</div><div>random</div></div>`
+            // 1.se asi el llamado a por medio de su id o su class a los elementos a utilisa
+            let volumen=document.getElementById("volumen")
             AUDIO = document.getElementById("sonido");
-            document.getElementById("caja").innerHTML=`${random} random`
-        }
-        function audio1() {
-           AUDIO.src="aud/TVアニメ『よふかしのうた』ノンクレジットOP 【Creepy Nuts「堕天」】_ 毎週木曜日24時55分からフジテレビ_ノイタミナ_ほかにて放送中_(M4A_128K).m4a"
-        //para que suene el audio con play() y para detenerlo con pause().
-       AUDIO.play();
+            // el volumen se pone en un 50% por el value de el input
+            AUDIO.volume=volumen.value
 
+            //  para que el volumen se pueda subir y bajar por me dio d un input tipo="range", se realiza un addEventListener que llama al input y este tome el valor de el input y lo reciva el audio
+            volumen.addEventListener("input",function(){
+                AUDIO.volume=volumen.value
+            })
         }
+
+        //para que suene el audio con play() y para detenerlo con pause().
+        function audio1() {
+        AUDIO.src="aud/TVアニメ『よふかしのうた』ノンクレジットOP 【Creepy Nuts「堕天」】_ 毎週木曜日24時55分からフジテレビ_ノイタミナ_ほかにて放送中_(M4A_128K).m4a"
+        AUDIO.play();
+        }
+
         function audio2() {
-       AUDIO.pause();
-            
+        AUDIO.pause();
         }
 
     </script>
@@ -35,7 +53,12 @@
     <button id="boton1">Sonar 1</button>
     <button id="boton2">Detener</button>
 
+    <!--vamos a crear un controlador de el volumen me diante un input type="range" y poner le un min y un max entre 1 y 0 ya que son los valores máximo y mínimo que admitirá el control de audio, el setp="0.01" lo que hase es como dividir el input en varias sepciones entre mas pequeño se a el numero mayor se va a dividir-->
+    <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5">
+
     <div id="caja"></div>  
-    <audio src="" id="sonido"></audio>
+
+    <!-- con controls se puede manupular y controlar el audio ya se el volumen o mo el timpo y su velocidad-->
+    <audio src="" id="sonido" controls></audio>
 </body>
 </html>
