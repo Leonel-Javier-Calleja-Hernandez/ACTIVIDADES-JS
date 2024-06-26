@@ -9,18 +9,23 @@
         window.onload=inicio;
         let cosas=["bombum","espejo","gorra","llavero"]
         let valor=["100","150","200","250"]
+        let random=Math.floor(Math.random()*10)+1
+        // cortar el codigo 
+        let AUDIO 
         function inicio() {
             document.getElementById("boton1").onclick=audio1
             document.getElementById("boton2").onclick=audio2
+            AUDIO = document.getElementById("sonido");
+            document.getElementById("caja").innerHTML=`${random} random`
         }
         function audio1() {
-            document.getElementById("sonido").src="aud/TVアニメ『よふかしのうた』ノンクレジットOP 【Creepy Nuts「堕天」】_ 毎週木曜日24時55分からフジテレビ_ノイタミナ_ほかにて放送中_(M4A_128K).m4a"
+           AUDIO.src="aud/TVアニメ『よふかしのうた』ノンクレジットOP 【Creepy Nuts「堕天」】_ 毎週木曜日24時55分からフジテレビ_ノイタミナ_ほかにて放送中_(M4A_128K).m4a"
         //para que suene el audio con play() y para detenerlo con pause().
-        document.getElementById("sonido").play();
+       AUDIO.play();
 
         }
         function audio2() {
-        document.getElementById("sonido").pause();
+       AUDIO.pause();
             
         }
 
