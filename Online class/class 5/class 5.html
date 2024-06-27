@@ -5,20 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        var a = 1;
-        f1()
+        var nombres=["leonel","angel","sofia","anllel","alfonso"]
+        // con el "(...#######) operador de propagacion" es para mandar como un i fuera un paque te los datos es para arrays 
+            saludar(...nombres)
 
-        function f1() {
-            let a = 10
-            let nuevo = "HOLA"
-            saludar(a, nuevo) 
-            alert(a)
+        function saludar(...a) {
+            alert(`hola ${a[0]}`)
+        }
 
-        }
-        function saludar(n, h) {
-            alert(`hola numero ${n} y ${h}`)
-        }
-           alert(a)
     </script>
 </head>
 <body>
