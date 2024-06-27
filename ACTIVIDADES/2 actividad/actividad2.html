@@ -14,17 +14,23 @@
         #numero{
             color: rgb(255, 0, 0);
         }
+        #cerrar{
+            font-size: 3rem;
+            user-select: none;
+        }
     </style>
     <script type="text/javascript">
     // En esta actividad se aprendera a como subir y bajar el audio medienate un input en js
         window.onload=inicio;
-        let random=Math.floor(Math.random()*10)+1
+        let random = Math.floor(Math.random()*10)+1
         let AUDIO 
+        let text = `<div id="random"><div id="numero">${random}</div><div>$</div><div>random</div></div>`
 
         function inicio() {
-            document.getElementById("boton1").onclick=audio1
-            document.getElementById("boton2").onclick=audio2
-            document.getElementById("caja").innerHTML=`<div id="random"><div id="numero">${random}</div><div>$</div><div>random</div></div>`
+            document.getElementById("boton1").onclick = audio1
+            document.getElementById("boton2").onclick = pause
+            document.getElementById("caja").innerHTML = text
+            document.getElementById("cerrar").onclick = cerrar
             // 1.se asi el llamado a por medio de su id o su class a los elementos a utilisa
             let volumen=document.getElementById("volumen")
             AUDIO = document.getElementById("sonido");
@@ -41,10 +47,21 @@
         function audio1() {
         AUDIO.src="aud/TVアニメ『よふかしのうた』ノンクレジットOP 【Creepy Nuts「堕天」】_ 毎週木曜日24時55分からフジテレビ_ノイタミナ_ほかにて放送中_(M4A_128K).m4a"
         AUDIO.play();
+        random++;
+        document.getElementById("caja").insertAdjacentHTML("beforeend",text)
+        document.getElementById("nombreCancion").innerHTML = `<h1>Estas Escuchando</h1>
+        <br>
+        <div>TVアニメ『よふかしのうた』ノンクレジットOP 【Creepy Nuts「堕天」】_ 毎週木曜日24時55分からフジテレビ_ノイタミナ_ほかにて放送中</div>`
         }
 
-        function audio2() {
+        function pause() {
         AUDIO.pause();
+        random=0
+        document.getElementById("caja").innerHTML = `<div id="random"><div id="numero">${random}</div><div>$</div><div>random</div></div>`
+        }
+
+        function cerrar() {
+            document.getElementById("nombreCancion").style.display="none"
         }
 
     </script>
@@ -56,7 +73,9 @@
     <!--vamos a crear un controlador de el volumen me diante un input type="range" y poner le un min y un max entre 1 y 0 ya que son los valores máximo y mínimo que admitirá el control de audio, el setp="0.01" lo que hase es como dividir el input en varias sepciones entre mas pequeño se a el numero mayor se va a dividir-->
     <input type="range" id="volumen" min="0" max="1" step="0.01" value="0.5">
 
-    <div id="caja"></div>  
+    <div id="caja"></div> 
+    <div id="cerrar">X</div>
+    <div id="nombreCancion"></div> 
 
     <!-- con controls se puede manupular y controlar el audio ya se el volumen o mo el timpo y su velocidad-->
     <audio src="" id="sonido" controls></audio>
