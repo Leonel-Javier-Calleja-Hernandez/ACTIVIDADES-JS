@@ -5,25 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        // var a = 1
-        // var b = 2
-        // var comparacion = a==b
-        // alert(comparacion) 
+      var nombres =["leonel", "angel", "komi", "tomas"]
+      saludar(...nombres)
 
-        var variable = 100
-        var n;
-        a()
+    //   si al final aparece "e" es por que falta ponerle a n el simbolo de propagacion como el de ariba
+      function saludar(...n) {
+        for (let k = 0; k < nombres.length; k++) {
+           alert("hola " + n[k])
+            
+        }
+      }
 
-        function a() {
-         let variable = 50
-         n = 12
-         
-        }
-    
-        if (true) {
-            var nuevo = 25
-        }
-        alert("n es " + nuevo)
     </script>
 </head>
 <body>
